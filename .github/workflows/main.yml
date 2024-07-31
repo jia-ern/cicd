@@ -29,7 +29,7 @@ jobs:
     steps:
       # Check out this repo, so that this workflow can access it.
       - name: Development
-        run: echo "Deploying to ${{ secrets.environment_name }}"
+        run: echo "Deploying to ${{ environment.environment_name }}"
 
   deploy_prod:
     name: "Deploy to Production"
