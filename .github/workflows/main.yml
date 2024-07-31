@@ -1,0 +1,28 @@
+# This workflow validates, deploys, and runs the specified bundle for QA
+name: "Databricks CICD"
+
+# # Ensure that only a single job or workflow using the same concurrency group runs at a time.
+# concurrency: 1
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push request events but only for the "main" branch
+  pull_request:
+   paths-ignore:
+      - 'README.md'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Used by the "pipeline_update" job to deploy the bundle.
+  # Bundle validation is automatically performed as part of this deployment.
+  # If validation fails, this workflow fails.
+  deploy:
+    name: "Deploy bundle"
+    runs-on: self-hosted #runs-on: ubuntu-latest
+
+    steps:
+      # Check out this repo, so that this workflow can access it.
+      - name: Development
+        run: echo("Deploying to DEV")
