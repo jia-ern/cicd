@@ -25,4 +25,4 @@ jobs:
     steps:
       # Check out this repo, so that this workflow can access it.
       - name: Development
-        run: echo("Deploying to DEV")
+        run: echo "Deploying to DEV"
