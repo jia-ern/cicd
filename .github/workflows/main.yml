@@ -43,4 +43,4 @@ jobs:
     steps:
       # Check out this repo, so that this workflow can access it.
       - name: Production
-        run: echo "Deploying to ${{ secrets.environment_name }}"
+        run: echo "Deploying to ${{ vars.environment_name }}"
