@@ -18,14 +18,29 @@ jobs:
   # Used by the "pipeline_update" job to deploy the bundle.
   # Bundle validation is automatically performed as part of this deployment.
   # If validation fails, this workflow fails.
-  deploy:
-    name: "Deploy bundle"
+  deploy_dev:
+    name: "Deploy to Development"
     runs-on: self-hosted #runs-on: ubuntu-latest
+    environment: Development
 
-    env:
-      environment_name: Dev
+    # env:
+    #   environment_name: Dev
 
     steps:
       # Check out this repo, so that this workflow can access it.
       - name: Development
-        run: echo "Deploying to ${{ env.environment_name }}"
+        run: echo "Deploying to ${{ secrets.environment_name }}"
+
+  deploy_prod:
+    name: "Deploy to Production"
+    runs-on: self-hosted #runs-on: ubuntu-latest
+    needs: deploy_dev
+    environment: Production
+
+    # env:
+    #   environment_name: Prod
+
+    steps:
+      # Check out this repo, so that this workflow can access it.
+      - name: Production
+        run: echo "Deploying to ${{ secrets.environment_name }}"
