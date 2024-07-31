@@ -1,5 +1,5 @@
 # This workflow validates, deploys, and runs the specified bundle for QA
-name: "Databricks CICD"
+name: "CICD"
 
 # # Ensure that only a single job or workflow using the same concurrency group runs at a time.
 # concurrency: 1
